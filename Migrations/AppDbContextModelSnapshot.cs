@@ -4,7 +4,6 @@ using APICatalago.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -18,23 +17,23 @@ namespace APICatalago.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.0")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
-
-            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("APICatalago.Models.Categoria", b =>
                 {
                     b.Property<int>("CategoriaId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("CategoriaId"));
+                        .HasColumnType("int");
 
                     b.Property<string>("ImagemUrl")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("varchar(80)");
 
                     b.HasKey("CategoriaId");
 
@@ -45,30 +44,34 @@ namespace APICatalago.Migrations
                 {
                     b.Property<int>("ProdutoId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ProdutoId"));
+                        .HasColumnType("int");
 
                     b.Property<int>("CategoriaId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<float>("Estoque")
-                        .HasColumnType("real");
+                        .HasColumnType("float");
 
-                    b.Property<string>("ImegmUrl")
-                        .HasColumnType("text");
-
-                    b.Property<string>("MyProperty")
-                        .HasColumnType("text");
+                    b.Property<string>("ImagemUrl")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("Nome")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("varchar(80)");
 
                     b.Property<decimal>("Preco")
-                        .HasColumnType("numeric");
+                        .HasColumnType("decimal(10,2)");
 
                     b.HasKey("ProdutoId");
 

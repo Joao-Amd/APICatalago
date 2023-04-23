@@ -1,11 +1,27 @@
 ANOTAÇÕES
 
-
+--------------------------------------------------------------------------------------------------------
 ENTITY FRAMEWORK CORE
 Uma das suas responsabilidades é a definição das propiendades no banco de dados
 
-
+--------------------------------------------------------------------------------------------------------
 CONTEXT
 DbContext  - Representa uma sessão com o banco sendo a ponte entre as entidades de domínio  
 
 DbSet<T> - Representa  uma coleção de entidades no contexto que podem  ser consultadas no  banco de dados
+
+Data Annotations 
+são artributos que podem ser aplicados a classess e seus membros, atributos direto na model
+
+--------------------------------------------------------------------------------------------------------
+ControllerBase
+
+métados Action:
+BadRequest() = retorna o status code 400
+NotFound() = Retorna  status code 404
+CreatedAtAction() = Retorna o status code 201
+PhysicalFile () = Retorna um arquivo
+TryValidationModel() = Invoca a validação do modelo
+Ok() = Retorna o status code  200
+
+--------------------------------------------------------------------------------------------------------
