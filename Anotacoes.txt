@@ -24,4 +24,14 @@ PhysicalFile () = Retorna um arquivo
 TryValidationModel() = Invoca a validação do modelo
 Ok() = Retorna o status code  200
 
+EndPoints:
+GET
+POST
+PUT
+DELETE
+
+ActionResult
+Retorna sempre um resultado, independe se é List o IEnumerable
 --------------------------------------------------------------------------------------------------------
+IEnumerable  
+não precisa ter toda a coleção na memoria, trabalha melhor com retorno
